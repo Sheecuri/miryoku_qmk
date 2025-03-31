@@ -89,3 +89,97 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(thumbcombos_fun, KC_APP)
 };
 #endif
+
+// clang-format on
+
+#ifdef OLED_ENABLE
+
+
+/* 32 * 32 logo */
+static void render_logo(void) {
+    static const char PROGMEM hexagram_logo[] = {
+	0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc0, 0x70, 0x18, 0x06,
+    0x06, 0x18, 0x70, 0xc0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00,
+    0x00, 0x00, 0x01, 0x07, 0x1f, 0x32, 0x66, 0xc4, 0x6c, 0x38, 0x1e, 0x37, 0x61, 0xc0, 0x80, 0x80,
+    0x80, 0x80, 0xc0, 0x61, 0x37, 0x1e, 0x38, 0x6c, 0xc4, 0x66, 0x32, 0x1f, 0x07, 0x01, 0x00, 0x00,
+    0x00, 0x00, 0x80, 0xe0, 0xf8, 0x4c, 0x66, 0x23, 0x36, 0x1c, 0x78, 0xec, 0x86, 0x03, 0x01, 0x01,
+    0x01, 0x01, 0x03, 0x86, 0xec, 0x78, 0x1c, 0x36, 0x23, 0x66, 0x4c, 0xf8, 0xe0, 0x80, 0x00, 0x00,
+    0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x0e, 0x18, 0x60,
+    0x60, 0x18, 0x0e, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00
+};
+    oled_write_raw_P(hexagram_logo, sizeof(hexagram_logo));
+}
+
+/* status variables */
+int   current_wpm = 0;
+led_t led_usb_state;
+
+static void print_logo_narrow(void) {
+    render_logo();
+if (current_wpm > 0) {
+    /* wpm counter */
+    oled_set_cursor(0, 14);
+    oled_write(get_u8_str(get_current_wpm(), '0'), false);
+
+    oled_set_cursor(0, 15);
+    oled_write(" wpm", false);
+
+    }
+}
+
+static void print_status_narrow(void) {
+
+
+    /* Print current layer */
+    oled_write("LAYER", false);
+
+    oled_set_cursor(0, 6);
+
+    switch (get_highest_layer(layer_state)) {
+        case 0:
+            oled_write("Base  ", false);
+            break;
+        case U_MEDIA:
+            oled_write("Media", false);
+            break;
+        case U_NAV:
+            oled_write("Nav  ", false);
+            break;
+        case U_MOUSE:
+            oled_write("Mouse", false);
+            break;
+        case U_SYM:
+            oled_write("Sym  ", false);
+            break;
+        case U_NUM:
+            oled_write("Num  ", false);
+            break;
+        case U_FUN:
+            oled_write("Fun  ", false);
+            break;
+        case U_SPECIAL:
+            oled_write("Spcl ", false);
+            break;
+        default:
+            oled_write("Undef", false);
+    }
+}
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
+
+bool oled_task_user(void) {
+    /* KEYBOARD PET VARIABLES START */
+
+    current_wpm   = get_current_wpm();
+
+    /* KEYBOARD PET VARIABLES END */
+
+    if (is_keyboard_master()) {
+        print_status_narrow();
+    } else {
+        print_logo_narrow();
+    }
+    return false;
+}
+
+#endif
