@@ -23,15 +23,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //COLEMAK
   [0] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      LGUI_T(KC_INS),  KC_Q, KC_W, KC_F, KC_P, KC_B,                            KC_J, KC_L, KC_U,    KC_Y,   KC_SCLN, RGUI_T(KC_INS),
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      LSFT_T(KC_COPY), KC_A, KC_R, KC_S, KC_T, KC_G,                            KC_M, KC_N, KC_E,    KC_I,   KC_O,    RSFT_T(KC_COPY),
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      LALT_T(KC_CUT),  KC_Z, KC_X, KC_C, KC_D, KC_V,                            KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, LALT_T(KC_CUT),
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                    LCTL_T(KC_ESC),   LT(1, KC_BSPC),  LT(2, KC_DEL),     LT(3, KC_ENT),   LT(4, KC_SPC), RALT_T(KC_TAB)
-                                      //`--------------------------'  `--------------------------'
+  //,-----------------------------------------------------.                             ,-----------------------------------------------------.
+      XXXXXXX,  KC_Q,                 KC_W,         KC_F,         KC_P, KC_B,               KC_J,         KC_L,         KC_U,            KC_Y,          KC_SCLN,    XXXXXXX,
+  //|--------+--------+--------+--------+--------+--------|                             |--------+--------+--------+--------+--------+--------|
+      XXXXXXX,  LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,               KC_M, RSFT_T(KC_N), RCTL_T(KC_E),    LALT_T(KC_I),     RGUI_T(KC_O),    XXXXXXX,
+  //|--------+--------+--------+--------+--------+--------|                             |--------+--------+--------+--------+--------+--------|
+      XXXXXXX,  RALT_T(KC_Z),         KC_X,         KC_C,         KC_D, KC_V,               KC_K,         KC_H,      KC_COMM,          KC_DOT,  RALT_T(KC_SLSH),    XXXXXXX,
+  //|--------+--------+--------+--------+--------+--------+--------|            |--------+--------+--------+--------+--------+--------+--------|
+                    LCTL_T(KC_ESC),   LT(1, KC_BSPC),  LT(2, KC_DEL),           LT(3, KC_ENT),   LT(4, KC_SPC), KC_TAB
+                                      //`--------------------------'            `--------------------------'
 
   ),
 
@@ -51,9 +51,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  // FUN
    [2] = LAYOUT_split_3x6_3(
  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+     XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX,
  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+     XXXXXXX,  KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,                       KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20, XXXXXXX,
  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -77,11 +77,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  // NUM
    [4] = LAYOUT_split_3x6_3(
  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
+     XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, KC_EQL, KC_PLUS, KC_MINS, KC_ASTR, KC_SLSH,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+     XXXXXXX, KC_EQL, KC_PLUS, KC_MINS, KC_ASTR, KC_SLSH,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, XXXXXXX, _______,
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, XXXXXXX, XXXXXXX,
  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                     _______, XXXXXXX, XXXXXXX,          XXXXXXX, _______, _______
                                      //`--------------------------'  `--------------------------'
@@ -274,27 +274,6 @@ if (current_wpm > 0) {
     }
 }
 
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//     switch (get_highest_layer(state)) {
-//     case 0:
-//         rgb_matrix_reload_from_eeprom();
-//         break;
-//     case 1:
-//         rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-//         rgb_matrix_sethsv_noeeprom(HSV_TEAL);
-//         break;
-//     case 2:
-//         rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-//         rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
-//         break;
-//     case 5:
-//         rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-//         rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
-//         break;
-//     }
-//   return state;
-// }
-
 static void print_status_narrow(void) {
 
 
@@ -305,22 +284,19 @@ static void print_status_narrow(void) {
 
     switch (get_highest_layer(layer_state)) {
         case 0:
-            oled_write("Base ", false);
+            oled_write("ALPHA", false);
             break;
         case 1:
-            oled_write("Game ", false);
+            oled_write("-NAV-", false);
             break;
         case 2:
-            oled_write("Game2", false);
+            oled_write("-FUN-", false);
             break;
         case 3:
-            oled_write("Lower", false);
+            oled_write("-SYM-", false);
             break;
         case 4:
-            oled_write("Raise", false);
-            break;
-        case 5:
-            oled_write("Adj  ", false);
+            oled_write("-NUM-", false);
             break;
         default:
             oled_write("Undef", false);
@@ -366,7 +342,7 @@ bool oled_task_user(void) {
                 showedJump = false;
             }
             break;
-        case KC_CAPS:
+        case CW_TOGG:
             isBarking = record->event.pressed;
             break;
 
